@@ -35,8 +35,8 @@ RUN echo "xdebug.remote_host=10.254.254.254" >> /usr/local/etc/php/conf.d/docker
 RUN echo "max_execution_time = 3000" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN apt-get install --yes nodejs 
 
-# install yarn
-RUN apt-get install -y gnupg apt-transport-https
+# install yarn and git-ftp
+RUN apt-get install -y gnupg apt-transport-https git-ftp
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
