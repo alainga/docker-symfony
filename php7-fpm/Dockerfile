@@ -43,6 +43,9 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get remove -y cmdtest
 RUN apt-get update && apt-get install -y yarn nodejs
 
+# add JSON support to php
+RUN docker-php-ext-install json
+
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
 
