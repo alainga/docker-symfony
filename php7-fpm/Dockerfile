@@ -44,7 +44,7 @@ RUN apt-get remove -y cmdtest
 RUN apt-get update && apt-get install -y yarn nodejs
 
 # add JSON support to php
-RUN docker-php-ext-install json
+RUN docker-php-ext-install json mysqli
 
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
