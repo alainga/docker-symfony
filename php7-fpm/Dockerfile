@@ -33,6 +33,8 @@ RUN echo "xdebug.idekey=\"PHPSTORM\"" >> /usr/local/etc/php/conf.d/docker-php-ex
 RUN echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.remote_host=10.254.254.254" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "max_execution_time = 3000" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN echo "memory_limit = 256M" >> /usr/local/etc/php/conf.d/memory-limit.ini
+
 RUN apt-get install --yes nodejs 
 
 # install yarn and git-ftp
