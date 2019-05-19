@@ -4,7 +4,7 @@ services:
     db:
         image: mysql
         command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
-        restart: always
+        #restart: always
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: symfony
@@ -13,8 +13,9 @@ services:
         environment:
             APP_ENV: dev
         volumes:
-            - ${SYMFONY_APP_PATH}:/var/www/symfony
-            - ./logs/symfony:/var/www/symfony/app/logs
+            - ${SYMFONY_APP_PATH}:/var/www/symfony:cached
+            - ${SYMFONY_APP_PATH}/var:/var/www/symfony/var:cached
+            - ./logs/symfony:/var/www/symfony/app/logs:cached
     nginx:
         build: nginx
         ports:
@@ -22,14 +23,14 @@ services:
         volumes_from:
             - php
         volumes:
-            - ./logs/nginx/:/var/log/nginx
-    elk:
-        image: willdurand/elk
-        ports:
-            - 81:80
-        volumes:
-            - ./elk/logstash:/etc/logstash
-            - ./elk/logstash/patterns:/opt/logstash/patterns
-        volumes_from:
-            - php
-            - nginx
+            - ./logs/nginx/:/var/log/nginx:cached
+              #elk:
+              #    image: willdurand/elk
+              #    ports:
+              #        - 81:80
+              #    volumes:
+              #        - ./elk/logstash:/etc/logstash:delegated
+              #        - ./elk/logstash/patterns:/opt/logstash/patterns:delegated
+              #    volumes_from:
+              #        - php
+              #        - nginx
