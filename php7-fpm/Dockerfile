@@ -1,5 +1,5 @@
 # See https://github.com/docker-library/php/blob/4677ca134fe48d20c820a19becb99198824d78e3/7.0/fpm/Dockerfile
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
 MAINTAINER Maxence POUTORD <maxence.poutord@gmail.com>
 
@@ -43,7 +43,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get remove -y cmdtest
-RUN apt-get update && apt-get install -y yarn nodejs
+RUN apt-get update && apt-get install -y yarn nodejs libzip-dev
 
 # add JSON support to php
 RUN docker-php-ext-install json mysqli zip
