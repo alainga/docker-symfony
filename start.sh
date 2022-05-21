@@ -13,10 +13,10 @@ cd "$(dirname "$0")"
 export SYMFONY_APP_PATH="$(dirname $(find $2 -name symfony.lock -print -quit))"
 
 case $1 in
-    start) /Applications/Docker.app/Contents/Resources/bin/docker-compose up -d;;
-    stop) /Applications/Docker.app/Contents/Resources/bin/docker-compose stop;;
+    start) docker-compose up -d;;
+    stop) docker-compose stop;;
     restart)
-        /Applications/Docker.app/Contents/Resources/bin/docker-compose stop
-        /Applications/Docker.app/Contents/Resources/bin/docker-compose up -d;;
+        docker-compose stop
+        docker-compose up -d;;
 esac
 

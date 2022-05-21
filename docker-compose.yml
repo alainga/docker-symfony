@@ -10,7 +10,7 @@ services:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: symfony
     php:
-        build: php7-fpm
+        build: php8-fpm
         platform: linux/amd64
         environment:
             APP_ENV: dev
